@@ -1,9 +1,5 @@
-(replace-regexp-in-string (regexp-quote "⍵") "y" "⍺↑ {:⍤1 ⍋⍨ (≢,⊃) ⌸⍨ ⍵")
-
-(replace-regexp-in-string (regexp-quote "xxx") "y" "⍺↑ {:⍤1 ⍋⍨ (≢,⊃) ⌸⍨ ⍵")
-
 ; "{≢ ⍺ ↑ {:⍤1 ⍋⍨ (≢,⊃) ⌸⍨ ⍵}"
-
+;
 ; {{ # x{. {: "1 \:~ (#,{.) /.~ y }}
 
 (setq pairs
@@ -16,14 +12,33 @@
         ("⍤" . "\"")
         ("↑" . "{.")
         ("{:" . "*tail*")
-        ;; ("{" . "{{")
-        ;; ("}" . "}}")
+        ("{" . "{{")
+        ("}" . "}}")
+        ("⍺" . "x")
         ))
 
-(setq apl-str "{⍺↑ {:⍤1 ⍋⍨ (≢,⊃) ⌸⍨ ⍵}")
+(setq apl-str "{≢ ⍺ ↑ {:⍤1 ⍋⍨ (≢,⊃) ⌸⍨ ⍵}")
 
-(pcase-dolist (`(,old . ,new) pairs)
-  (setq apl-str (replace-regexp-in-string (regexp-quote old) new apl-str)))
+(setq apl-str
+ (let ((regexp (regexp-opt (mapcar #'car pairs))))
+   (replace-regexp-in-string
+    regexp
+    (lambda (match)
+      (pcase (assoc match pairs)
+        (`(,_ . ,new) new)))
+    apl-str)))
+
+(setq pairs2
+      '(("*tail*" . "{:")
+        ))
+
+(setq apl-str
+ (let ((regexp (regexp-opt (mapcar #'car pairs2))))
+   (replace-regexp-in-string
+    regexp
+    (lambda (match)
+      (pcase (assoc match pairs2)
+        (`(,_ . ,new) new)))
+    apl-str)))
 
 apl-str
-
