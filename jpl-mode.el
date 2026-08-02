@@ -85,7 +85,7 @@
          (apl-text (apl->j text))
          (win (get-buffer-window "*J*")))
 
-    (message apl-text)
+    (message "%s" apl-text)
 
     (with-current-buffer (get-buffer "*J*")
       (goto-char (point-max))
