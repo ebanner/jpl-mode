@@ -62,6 +62,11 @@
         ("⊙" . "}")
         ("∊" . "e.")
         ("⍕" . "\":")
+        ("⋅" . "/ .")
+        ("⊕" . "(22 b.)")
+        ("⍉" . "|:")
+        ("⍥" . "&")
+
         ))
 
 (setq pairs2
@@ -223,7 +228,7 @@
     ("`]" . "→")    ; rightarrow
     ("`}" . "⍬")    ; zilde
     ("\\zilde" . "⍬")    ; zilde
-    ("\\righttack" . "⊢")
+    ("\\right" . "⊢")
     ("`|" . "⊣")    ; left-tack
     ("`lefttack" . "⊣")    ; left-tack
 
@@ -302,10 +307,10 @@
     ("`qb" . "⍂")   ; quad-backslash
     ("`iq" . "¿")   ; inverted-question-mark
 
-    ("`partition" . "⊆") ; subset-of
-    ("`key" . "⌸") ; key
-    ("\\tail" . "⊐")
+    ("`partition" . "⊆") ; subset-of ("`key" . "⌸") ; key ("\\tail" . "⊐")
     ("\\curtail" . "†")
+    ("\\dot" . "⋅")
+    ("\\encode" . "⊤")
 
     ))
 
@@ -324,3 +329,7 @@
      (comint-send-string proc "\r"))))
 
 (pop-to-buffer "*J*")
+
+(evil-window-move-very-top)
+
+(other-window 1)
