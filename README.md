@@ -38,7 +38,7 @@ Inverse/obverse
 ```apl
 str ← '24:00'
 
-serde ← ((60∘⊥) ⍤ ((⍎¨)⇔(⍕¨)) ⍤ ((':'∘chopstring)⇔(':'∘joinstring)))
+serde ← ((60∘⊥) ⍤ ((⍎¨)⇔(⍕¨)) ⍤ ((':'∘cut)⇔(':'∘joinstring))) NB. chopstring also works
 
 3 {÷∘⍺⍢serde⍵} str
 ```
