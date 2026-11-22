@@ -2,7 +2,7 @@
 
 APL/BQN glyphic frontend for J
 
-## Examples
+## Highlights
 
 Fixed point scan
 
@@ -16,13 +16,7 @@ Power scan with condition
 {⍵÷2} ⍣ {⍵≥1} ⍣ ⍬ ⊢ 10
 ```
 
-Amend
-
-```apl
-1 (<1 1) ⊙ 3 3⍴0
-```
-
-Stencil (no padding)
+Stencil with no padding
 
 ```apl
 2 2 < ⌺ ¯3 ⊢ 3 3⍴0
