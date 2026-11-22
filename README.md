@@ -30,9 +30,7 @@ Counts
 
 Inverse/obverse
 ```apl
-time ← '24:00'
+sec ← (60∘⊥) ⍤ ((⍎¨)⇔(⍕˝)) ⍤ ((':'∘cut)⇔(':'∘joinstring)) NB. chopstring also works
 
-serde ← (60∘⊥) ⍤ ((⍎¨)⇔(⍕˝)) ⍤ ((':'∘cut)⇔(':'∘joinstring)) NB. chopstring also works
-
-÷∘3⍢serde time
+÷∘3⍢sec '24:00'
 ```
